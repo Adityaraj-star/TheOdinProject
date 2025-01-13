@@ -36,9 +36,11 @@ function createGrid(gridSize) {
 // Handles interaction with a cell (drawing or erasing). 
 // This function is called when we hover over cell.
 function handleCellInteraction(cell) {
+    
     if (eraseMode) {
         // Erase cell color
         cell.style.backgroundColor = "";
+        cell.colorChanged = false;
     } else if (drawMode) {
         if (!cell.colorChanged) {
             // Set a random color if the cell hasn't been colored yet
@@ -90,7 +92,10 @@ function changeGridSize() {
  */
 function resetGrid() {
     const cells = document.querySelectorAll(".cell");
-    cells.forEach(cell => (cell.style.backgroundColor = ""));
+    cells.forEach(cell => {
+        cell.style.backgroundColor = "";
+        cell.colorChanged = false;
+    });    
 }
 
 // Toggles the erase mode.
@@ -98,6 +103,8 @@ function resetGrid() {
 function toggleEraseMode() {
     eraseMode = !eraseMode;
     eraseButton.textContent = eraseMode ? "Stop Erasing" : "Erase";
+    if (eraseMode) drawMode = false; // Disable draw mode if erase is active
+    drawButton.textContent = "Draw";
 }
 
 //Toggles the draw mode.
@@ -105,6 +112,8 @@ function toggleEraseMode() {
 function toggleDrawMode() {
     drawMode = !drawMode;
     drawButton.textContent = drawMode ? "Stop Drawing" : "Draw";
+    if (drawMode) eraseMode = false; // Disable erase mode if draw is active
+    eraseButton.textContent = "Erase";
 }
 
 
