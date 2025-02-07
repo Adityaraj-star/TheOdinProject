@@ -43,8 +43,7 @@ let storedNum = ""; //Holds the first number before an operation
 let currentNum = ""; //Holds the number being entered
 let operator = "";
 let shouldResetScreen = false;
-
-const MAX_DIGITS = 13;
+let MAX_DIGITS = 10;
 
 
 const updateDisplay = (num) => {
@@ -59,6 +58,7 @@ digit_btn.forEach((digit) => {
         } // clean screen after pressing "="
 
         if (currentNum.length > MAX_DIGITS) return;
+
 
         if (currentNum === "0"){
             currentNum = ""; // prevent leading zero
@@ -130,11 +130,13 @@ document.addEventListener("keydown", (e) => {
             currentNum = "";
             shouldResetScreen = false;
         }
+
+        if (currentNum.length > MAX_DIGITS) return;
+        
         currentNum += e.key;
         updateDisplay(currentNum);
     } 
     
-    if (currentNum.length > MAX_DIGITS) return;
     
     if (["+", "-", "*", "/", "%"].includes(e.key)){
         if (currentNum === "" && storedNum !== ""){
