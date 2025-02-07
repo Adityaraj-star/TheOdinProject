@@ -163,4 +163,9 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
         clr_btn.click();
     }
+
+    if (e.key === "." && !currentNum.includes(".")){
+        currentNum += ".";
+        updateDisplay(currentNum);
+    }
 })
