@@ -17,6 +17,7 @@ const divide = (a, b) => {
     return a / b;
 }
 const exponent = (a, b) => a ** b;
+const percentage = (a, b) => (a *b) / 100;
 
 
 const operate = (num1, num2, operator) => {
@@ -31,6 +32,8 @@ const operate = (num1, num2, operator) => {
             return divide(num1, num2);
         case "**":
             return exponent(num1, num2);
+        case "%":
+            return percentage(num1, num2);
         default:
             return num2;
     }
@@ -40,6 +43,9 @@ let storedNum = ""; //Holds the first number before an operation
 let currentNum = ""; //Holds the number being entered
 let operator = "";
 let shouldResetScreen = false;
+
+const MAX_DIGITS = 13;
+
 
 const updateDisplay = (num) => {
     display.textContent = num || "0";
@@ -52,9 +58,13 @@ digit_btn.forEach((digit) => {
             shouldResetScreen = false;
         } // clean screen after pressing "="
 
+        if (currentNum.length > MAX_DIGITS) return;
+
         if (currentNum === "0"){
             currentNum = ""; // prevent leading zero
         }
+
+
         currentNum += digit.textContent;
         updateDisplay(currentNum);
     })
@@ -124,7 +134,9 @@ document.addEventListener("keydown", (e) => {
         updateDisplay(currentNum);
     } 
     
-    if (["+", "-", "*", "/"].includes(e.key)){
+    if (currentNum.length > MAX_DIGITS) return;
+    
+    if (["+", "-", "*", "/", "%"].includes(e.key)){
         if (currentNum === "" && storedNum !== ""){
             operator = e.key;
             return;
