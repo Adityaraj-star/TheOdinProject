@@ -23,20 +23,26 @@ const percentage = (a, b) => (a *b) / 100;
 const operate = (num1, num2, operator) => {
     switch (operator) {
         case "+":
-            return add(num1, num2);
+            result =  add(num1, num2);
+        break;
         case "-":
-            return subtract(num1, num2);
+            result =  subtract(num1, num2);
+        break;
         case "*":
-            return multiply(num1, num2);
+            result =  multiply(num1, num2);
+        break;
         case "/":
-            return divide(num1, num2);
+            result =  divide(num1, num2);
+        break;
         case "**":
-            return exponent(num1, num2);
+            result =  exponent(num1, num2);
+        break;
         case "%":
-            return percentage(num1, num2);
-        default:
-            return num2;
+            result =  percentage(num1, num2);
+        break;
     }
+
+    return Number.isFinite(result) ? parseFloat(result.toFixed(6)) : "Error";
 }
 
 let storedNum = ""; //Holds the first number before an operation
@@ -72,11 +78,8 @@ digit_btn.forEach((digit) => {
 
 operator_btn.forEach((op) => {
     op.addEventListener("click", () => {
-        if (currentNum === "" && storedNum !== ""){
-            // if user presses an operator more than once without entering new number, we are taking the last entered operator
-            operator = op.textContent;
-            return;
-        }
+        if (currentNum === "" && storedNum !== "") return; //Prevent multiple operators
+
         if (currentNum === "") return; //ignore if no number entered
 
         if (storedNum !== "") equal_btn.click();
@@ -84,6 +87,7 @@ operator_btn.forEach((op) => {
         storedNum = currentNum;
         operator = op.textContent;
         currentNum = "";
+        shouldResetScreen = true;
     })
 })
 
@@ -132,7 +136,7 @@ document.addEventListener("keydown", (e) => {
         }
 
         if (currentNum.length > MAX_DIGITS) return;
-        
+
         currentNum += e.key;
         updateDisplay(currentNum);
     } 
