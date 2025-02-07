@@ -13,12 +13,12 @@ Performing Calculations: Enter numbers, then click an operator. Press the "Equal
 History: The history of recent calculations will be displayed below the calculator. You can scroll through it to view your previous operations.
 
 Functions
-add(a, b): Returns the sum of a and b.
-subtract(a, b): Returns the difference between a and b.
-multiply(a, b): Returns the product of a and b.
-divide(a, b): Returns the quotient of a and b (checks for division by zero).
-exponent(a, b): Returns a raised to the power of b.
-percentage(a, b): Returns a as a percentage of b.
+1. add(a, b): Returns the sum of a and b.
+2. subtract(a, b): Returns the difference between a and b.
+3. multiply(a, b): Returns the product of a and b.
+4. divide(a, b): Returns the quotient of a and b (checks for division by zero).
+5. exponent(a, b): Returns a raised to the power of b.
+6. percentage(a, b): Returns a as a percentage of b.
 
 Contributing
 Feel free to fork this project, make improvements, or add features. Submit a pull request if you have any changes you'd like to contribute.
