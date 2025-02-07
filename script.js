@@ -1,10 +1,11 @@
-const digit_btn = document.querySelectorAll(".digit")
-const operator_btn = document.querySelectorAll(".operator")
-const decimal_btn = document.querySelector("#dot")
-const del_btn = document.querySelector("#clear")
-const clr_btn = document.querySelector("#all-clear")
-const equal_btn = document.querySelector("#equal-to")
-const display = document.querySelector("#screen")
+const digit_btn = document.querySelectorAll(".digit");
+const operator_btn = document.querySelectorAll(".operator");
+const decimal_btn = document.querySelector("#dot");
+const del_btn = document.querySelector("#clear");
+const clr_btn = document.querySelector("#all-clear");
+const equal_btn = document.querySelector("#equal-to");
+const display = document.querySelector("#screen");
+const history = document.querySelector("#history-container");
 
 
 const add = (a, b) => a + b;
@@ -21,6 +22,7 @@ const percentage = (a, b) => (a *b) / 100;
 
 
 const operate = (num1, num2, operator) => {
+    let result;
     switch (operator) {
         case "+":
             result =  add(num1, num2);
@@ -50,11 +52,20 @@ let currentNum = ""; //Holds the number being entered
 let operator = "";
 let shouldResetScreen = false;
 let MAX_DIGITS = 10;
+let historyList = []; // Store history
 
 
 const updateDisplay = (num) => {
     display.textContent = num || "0";
 }
+
+const updateHistory = () => {
+    history.innerHTML = historyList
+    .map(item => `<p>${item}</p>`)
+    .join("");
+    history.scrollTop = history.scrollHeight;
+}
+
 
 digit_btn.forEach((digit) => {
     digit.addEventListener("click", () => {
@@ -100,6 +111,10 @@ equal_btn.addEventListener("click", () => {
     let result = operate(num1, num2, operator);
     updateDisplay(result);
 
+    historyList.push(`${num1} ${operator} ${num2} = ${result}`)
+    if (historyList.length > 5) historyList.shift();
+    updateHistory();
+
     storedNum = result.toString();
     currentNum = "";
     operator = "";
@@ -116,6 +131,8 @@ clr_btn.addEventListener("click", () => {
     storedNum = "";
     operator = "";
     updateDisplay("0");
+    historyList = [];
+    updateHistory();
 
 })
 
