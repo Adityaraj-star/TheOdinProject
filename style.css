@@ -178,6 +178,7 @@ body {
     background-color: #e5eaf2;
     display: grid;
     grid-template-columns: 2fr 1fr;
+    align-items: stretch;
     gap: 1.5rem;
 }
 
@@ -231,12 +232,12 @@ body {
 .info-panel {
     align-self: start;
     display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .announcements, .trending {
     background-color: #fff;
-    padding: 1rem;
+    padding: 1rem 1rem;
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
