@@ -5,7 +5,7 @@ const del_btn = document.querySelector("#clear");
 const clr_btn = document.querySelector("#all-clear");
 const equal_btn = document.querySelector("#equal-to");
 const display = document.querySelector("#screen");
-const history = document.querySelector("#history-container");
+const history = document.querySelector("#history");
 
 
 const add = (a, b) => a + b;
@@ -18,7 +18,7 @@ const divide = (a, b) => {
     return a / b;
 }
 const exponent = (a, b) => a ** b;
-const percentage = (a, b) => (a *b) / 100;
+const modulo = (a, b) => a % b;
 
 
 const operate = (num1, num2, operator) => {
@@ -42,6 +42,8 @@ const operate = (num1, num2, operator) => {
         case "%":
             result =  percentage(num1, num2);
         break;
+        default:
+            return "Error"
     }
 
     return Number.isFinite(result) ? parseFloat(result.toFixed(6)) : "Error";
@@ -69,38 +71,43 @@ const updateHistory = () => {
 
 digit_btn.forEach((digit) => {
     digit.addEventListener("click", () => {
-        if (shouldResetScreen){
+        if (shouldResetScreen) {
             currentNum = "";
             shouldResetScreen = false;
-        } // clean screen after pressing "="
-
-        if (currentNum.length > MAX_DIGITS) return;
-
-
-        if (currentNum === "0"){
-            currentNum = ""; // prevent leading zero
         }
-
-
+        if (currentNum.length >= MAX_DIGITS) return;
+        if (currentNum === "0") currentNum = "";
         currentNum += digit.textContent;
         updateDisplay(currentNum);
-    })
-})
+    });
+});
 
 operator_btn.forEach((op) => {
     op.addEventListener("click", () => {
-        if (currentNum === "" && storedNum !== "") return; //Prevent multiple operators
+        const clickedOp = op.textContent === "x" || op.textContent === "xʸ" ? "**" : op.textContent; 
 
-        if (currentNum === "") return; //ignore if no number entered
+        if (currentNum === "" && storedNum !== "") {
+            operator = clickedOp;
+            return;
+        }
+        if (currentNum === "") return;
 
-        if (storedNum !== "") equal_btn.click();
+        if (storedNum !== "") {
+            const num1 = parseFloat(storedNum);
+            const num2 = parseFloat(currentNum);
+            const result = operate(num1, num2, operator);
+            updateDisplay(result);
+            storedNum = result.toString();
+        } else {
+            storedNum = currentNum;
+        }
 
-        storedNum = currentNum;
-        operator = op.textContent;
+        operator = clickedOp;
         currentNum = "";
         shouldResetScreen = true;
-    })
-})
+    });
+});
+
 
 equal_btn.addEventListener("click", () => {
     if (storedNum === "" || currentNum === "") return; //ensure both numbers exists
@@ -122,21 +129,33 @@ equal_btn.addEventListener("click", () => {
 })
 
 del_btn.addEventListener("click", () => {
-    currentNum = currentNum.slice(0, -1);
-    updateDisplay(currentNum || "0");
+    if (currentNum.length > 0) {
+        currentNum = currentNum.slice(0, -1);
+        updateDisplay(currentNum || "0");
+    } else if (operator) {
+        operator = "";
+    } else if (storedNum) {
+        storedNum = "";
+        updateDisplay("0");
+    }
 })
 
 clr_btn.addEventListener("click", () => {
     currentNum = "";
     storedNum = "";
     operator = "";
-    updateDisplay("0");
     historyList = [];
+    updateDisplay("0");
     updateHistory();
 
 })
 
 decimal_btn.addEventListener("click", () => {
+    if (shouldResetScreen) {
+        currentNum = "0";
+        shouldResetScreen = false;
+    }
+
     if (!currentNum.includes(".")) {
         currentNum += ".";
         updateDisplay(currentNum);
@@ -146,21 +165,18 @@ decimal_btn.addEventListener("click", () => {
 
 // using keyboard to use calculator
 document.addEventListener("keydown", (e) => {
-    if (e.key >= "0" && e.key <= "9"){
+    if (e.key >= "0" && e.key <= "9") {
         if (shouldResetScreen) {
             currentNum = "";
             shouldResetScreen = false;
         }
-
-        if (currentNum.length > MAX_DIGITS) return;
-
+        if (currentNum.length >= MAX_DIGITS) return;
         currentNum += e.key;
         updateDisplay(currentNum);
-    } 
-    
-    
-    if (["+", "-", "*", "/", "%"].includes(e.key)){
-        if (currentNum === "" && storedNum !== ""){
+    }
+
+    if (["+", "-", "*", "/", "%"].includes(e.key)) {
+        if (currentNum === "" && storedNum !== "") {
             operator = e.key;
             return;
         }
@@ -168,21 +184,14 @@ document.addEventListener("keydown", (e) => {
         storedNum = currentNum;
         currentNum = "";
         operator = e.key;
-
     }
 
-    if (e.key === "Enter") {
-        equal_btn.click();
-    }
-    if (e.key === "Backspace") {
-        del_btn.click();
-    }
-    if (e.key === "Escape") {
-        clr_btn.click();
-    }
+    if (e.key === "Enter" || e.key === "=") equal_btn.click();
+    if (e.key === "Backspace") del_btn.click();
+    if (e.key === "Escape") clr_btn.click();
 
-    if (e.key === "." && !currentNum.includes(".")){
+    if (e.key === "." && !currentNum.includes(".")) {
         currentNum += ".";
         updateDisplay(currentNum);
     }
-})
+});
