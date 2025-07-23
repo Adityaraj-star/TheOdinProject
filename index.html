@@ -9,11 +9,11 @@
 <body>
     <aside>
         <div class="logo-container">
-            <img class="logo" src="assets/odin-lined.png" alt="odin logo" class="logo">
-            <p class="logo-name">ODIN</p>
+            <img class="logo" src="assets/odin-lined.png" alt="odin logo">
+            <h1 id="logo-name">ODIN</h1>
         </div>
 
-        <div>
+        <div class="credit">
             <p>Photo by <a href="https://unsplash.com/@haliewestphoto" target="_blank">Halie West </a>on <a href="https://unsplash.com/photos/green-leaf-plant-in-close-up-photography-25xggax4bSA">Unsplash</a></p>
         </div>
     </aside>
@@ -28,9 +28,11 @@
         </div>
 
         <div class="form-content">
-            <form action="https://httpbin.org/" method="post" class="form">
+            <form action="#" method="post" class="form">
                 <fieldset>
-                    <legend>Let's do this!</legend>
+                    <div>
+                        <legend>Let's do this!</legend>
+                    </div>
 
                     <div class="rows">
                         <div>
@@ -60,13 +62,20 @@
                         </div>
                         <div>
                             <label for="confirm_password">CONFIRM PASSWORD</label>
-                            <input type="text" id="confirm_password" name="confirm_password">
+                            <input type="password" name="confirm_password"
+                            id="confirm_password">
                         </div>
                     </div>
                 </fieldset>
-                <button type="submit" class="submit">Create Account</button>
-                <p>Already have an account? <button type="button" class="login">Login</button></p>
+
+                <div class="create-account">
+                    <button type="submit" class="submit">Create Account</button>
+                </div>  
             </form>
+
+            <div class="bottom-text">
+                <p>Already have an account? <a href="#" class="login">Login</a></p>
+            </div>
         </div>
     </main>
 </body>
