@@ -117,6 +117,11 @@ input:focus {
     box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
 }
 
+#password, #confirm_password:invalid {
+    border: 2px solid red;
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
+}
+
 
 .create-account {
     padding: 2em;
