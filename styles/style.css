@@ -33,7 +33,7 @@ body {
 
 .main-content {
     flex: 1;
-    padding: 1rem;
+    padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
 }
@@ -61,9 +61,9 @@ body {
 }
 
 .content {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 2rem;
-    flex-wrap: wrap;
 }
 
 .books-info {
@@ -109,3 +109,140 @@ body {
 .copyright {
     font-size: 1.2rem;
 }
+
+.form_container {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: radial-gradient(circle at top left, #fde2e4 0%, #fde2e4 30%, #fff1f2 100%);
+
+}
+
+.caption_container {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.book_details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail input {
+    font-size: 1rem;
+    width: 400px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 3px solid #E5E7EB;
+}
+
+.detail input:focus {
+    outline: none;
+    border: 3px solid #d6094a;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle_container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Toggle switch base */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+/* Hide the default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider background */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d6cdb7;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Slider circle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* When checked, change position and color */
+.switch input:checked + .slider {
+  background-color: rgb(214, 53, 80);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.buttons_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.confirm_btn, .reset_btn {
+    border: none;
+    font-size: 1rem;
+    width: 400px;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.confirm_btn {
+    background-color: rgb(214, 53, 80);
+    color: white;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reset_btn {
+    background-color: #fde2e4;
+    color: rgb(214, 53, 80);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(214, 53, 80);
+}
+
+.confirm_btn:hover {
+    background-color:  #fde2e4;
+    color: rgb(214, 53, 80);
+    border: 2px solid rgb(214, 53, 80);
+}
+
+.reset_btn:hover {
+    background-color: rgb(214, 53, 80);
+    color: white;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
