@@ -1,4 +1,4 @@
-import { library } from "./data/library.js";
+import { library, addBookToLibrary } from "./data/library.js";
 
 const addBookBtn = document.querySelector(".js-add-book-btn");
 const formDialog = document.querySelector(".js-form-dialog");
@@ -8,24 +8,11 @@ const bookAuthor = document.querySelector(".js-book-author");
 const bookPages = document.querySelector(".js-book-pages");
 const bookStatus = document.querySelector(".js-book-status");
 const confirmBtn = document.querySelector(".js-confirm-btn");
+const markReadBtn = document.querySelector(".js-mark-read");
+const removeBtn = document.querySelector(".js-remove");
 
 
-function Book(id, title, author, pages, status) {
-    this.id = id
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-}
-
-function addBookToLibrary(bookId, bookTitle, bookAuthor, bookPages, bookStatus) {
-    const book = new Book(bookId, bookTitle, bookAuthor, bookPages, bookStatus);
-    
-    library.push(book);
-    renderBooks();
-}
-
-function renderBooks() {
+export function renderBooks() {
     let booksHTML = '';
     library.forEach((book) => {
         const html = 
@@ -58,32 +45,23 @@ bookForm.addEventListener('submit', (event) => {
     event.preventDefault();
 });
 
+
+
+
+
 confirmBtn.addEventListener('click', () => {
-    formDialog.close();
-})
+    const title = bookTitle.value;
+    const author = bookAuthor.value;
+    const pages = bookPages.value;
+    const status = bookStatus.checked ? 'read' : 'unread';
+    // checked property tells if checkbox is checked or not
+    
 
+    addBookToLibrary(title, author, pages, status);
 
-function retrieveBookData() {
-    let title, author, pages, status;
-    confirmBtn.addEventListener('click', () => {
-        title = bookTitle.value;
-        author = bookAuthor.value;
-        pages = bookPages.value;
+    formDialog.close(); //used to close form dialog when we click confirm btn
+});
 
-        // checked property tells if checkbox is checked or not
-        if (bookStatus.checked) {
-            status = "read";
-        } else {
-            status = "unread";
-        }
-
-        addBookToLibrary(crypto.randomUUID(), title, author, pages, status);
-    });
-
-
-}
-
-retrieveBookData();
 
 
 
