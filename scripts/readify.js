@@ -1,4 +1,4 @@
-import { library, addBookToLibrary } from "./data/library.js";
+import { library, addBookToLibrary, removeBookFromLibrary, changeStatus} from "./data/library.js";
 
 const addBookBtn = document.querySelector(".js-add-book-btn");
 const formDialog = document.querySelector(".js-form-dialog");
@@ -8,11 +8,9 @@ const bookAuthor = document.querySelector(".js-book-author");
 const bookPages = document.querySelector(".js-book-pages");
 const bookStatus = document.querySelector(".js-book-status");
 const confirmBtn = document.querySelector(".js-confirm-btn");
-const markReadBtn = document.querySelector(".js-mark-read");
-const removeBtn = document.querySelector(".js-remove");
 
 
-export function renderBooks() {
+function renderBooks() {
     let booksHTML = '';
     library.forEach((book) => {
         const html = 
@@ -20,11 +18,11 @@ export function renderBooks() {
             <article class="books-info">
                 <h3><q>${book.title}</q></h3>
                 <p><strong>Author: </strong>${book.author}</p>
-                <p><strong>Length: </strong>${book.pages} pages</p>
-                <p><strong>Status: </strong>${book.status}</p>
+                <p><strong>Pages: </strong>${book.pages} pages</p>
+                <p ><strong>Status: </strong>${book.status}</p>
                 <div class="action-buttons">
-                    <button class="action">Mark as Read</button>
-                    <button class="action">Remove</button>
+                    <button class="action js-mark-read" data-book-id = "${book.id}">${book.status === 'read' ? 'Mark as Unread' : 'Mark as Read'}</button>
+                    <button class="action js-remove" data-book-id = "${book.id}">Remove</button>
                 </div>
             </article>
         `;
@@ -32,6 +30,9 @@ export function renderBooks() {
     });
 
     document.querySelector('.content').innerHTML = booksHTML;
+
+    attachRemoveButtonListeners();//Re-attaches the event listeners again because all HTML was re-rendeered.
+    setupMarkReadButtons();
 }
 
 renderBooks();
@@ -45,10 +46,6 @@ bookForm.addEventListener('submit', (event) => {
     event.preventDefault();
 });
 
-
-
-
-
 confirmBtn.addEventListener('click', () => {
     const title = bookTitle.value;
     const author = bookAuthor.value;
@@ -56,12 +53,36 @@ confirmBtn.addEventListener('click', () => {
     const status = bookStatus.checked ? 'read' : 'unread';
     // checked property tells if checkbox is checked or not
     
-
     addBookToLibrary(title, author, pages, status);
-
+    renderBooks();
+    
     formDialog.close(); //used to close form dialog when we click confirm btn
 });
 
+function attachRemoveButtonListeners() {
+    const removeBtns = document.querySelectorAll(".js-remove");
+    removeBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const bookId = btn.dataset.bookId;
 
+            removeBookFromLibrary(bookId);
+            renderBooks();
+        });
+    });
+}
 
+console.log(library);
 
+function setupMarkReadButtons() {
+    const markReadBtns = document.querySelectorAll(".js-mark-read");
+
+    markReadBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const bookId = btn.dataset.bookId;
+
+            changeStatus(bookId);
+            renderBooks();
+        });
+    });
+
+}
