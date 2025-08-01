@@ -71,8 +71,6 @@ function attachRemoveButtonListeners() {
     });
 }
 
-console.log(library);
-
 function setupMarkReadButtons() {
     const markReadBtns = document.querySelectorAll(".js-mark-read");
 
