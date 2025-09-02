@@ -22,3 +22,8 @@ const GameBoard = (function () {
         resetBoard
     }
 })();
+
+function Player(name, marker) {
+    return {name, marker};
+}
+
