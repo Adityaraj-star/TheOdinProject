@@ -37,6 +37,8 @@ const GameController = (function () {
 
 
     function playRound(index) {
+        if (isGameOver) return;
+
         //Placing active player marker on board
         GameBoard.placeMark(index, activePlayer.marker);
 
