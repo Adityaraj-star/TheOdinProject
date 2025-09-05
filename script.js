@@ -39,12 +39,14 @@ const GameController = (function () {
     function playRound(index) {
         if (isGameOver) return;
 
+        if (GameBoard.getBoard()[index] !== '') return; // prevents overwriting if board is already occupied
+
         //Placing active player marker on board
         GameBoard.placeMark(index, activePlayer.marker);
 
 
         if (_checkWinner()) {  //if after placing marker, checks if that makes a win
-            console.log(`${activePlayer.name} wins!`);;
+            console.log(`${activePlayer.name} wins!`);
             isGameOver = true;
         }else if (_checkTie()) { //no winner (board is full)
             console.log(`It's a Tie.`)
