@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <span class="material-icons">menu_book</span>
+        <h1 class="heading">Readify</h1>
+    </header>
+
+    <main class="main-content">
+        <div class="add">
+            <button class="add-book-btn js-add-book-btn">+ Add Book</button>
+        </div>
+
+        <section class="content">
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="copyright">Copyright &copy; 2025 Readify</p>
+        <a href="https://github.com/Adityaraj-star/Library"><img src="img/github.png" alt="github repository for Readify" width="32px" height="32px"></a>
+    </footer>
+
+    <dialog class="js-form-dialog">
+        <form method="dialog" class="js-book-form">
+            <fieldset class="form_container">
+                <div class="caption_container">
+                    <legend>Add New Book</legend>
+                </div>
+
+                <div class="book_details">
+
+                    <div class="detail">
+                        <label for="book_title">Book Title</label>
+                        <input class="js-book-title" type="text" id="book_title" name="bookTitle" placeholder="Enter Book Title" required autofocus>
+                    </div>
+
+                    <div class="detail">
+                        <label for="book_author">Book Author</label>
+                        <input class="js-book-author" type="text" id="book_author" name="bookAuthor" placeholder="Enter Book Author" required>
+                    </div>
+
+                    <div class="detail">
+                        <label for="book_pages">No. of Pages</label>
+                        <input class="js-book-pages" type="number" id="book_pages" name="bookPages" placeholder="Enter Pages" required> 
+                    </div>
+
+                </div>
+
+                <div class="toggle_container">
+                    <label class="switch">
+                        <input class="js-book-status" type="checkbox" name="read">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Did you read this?</span>
+                </div>
+
+                <div class="buttons_container">
+                    <button type="submit" class="confirm_btn js-confirm-btn" value="confirm">CONFIRM</button>
+                    <button  type="reset" class="reset_btn" value="reset">RESET</button>
+                </div>
+
+                
+            </fieldset>
+        </form>
+    </dialog>
+
+    <script type="module" src="scripts/readify.js"></script>   
+</body>
+</html>
