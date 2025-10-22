@@ -12,45 +12,45 @@
         <h1><i class="fa-solid fa-check-double"></i> ToDo</h1>
     </header>
 
-    <nav id="sidebar-menu">
-        <div class="menu-items">
-            <button class="menu-item">
+    <nav id="sidebar">
+        <div class="sidebar-nav">
+            <button class="nav-link">
                 <i class="fa-regular fa-calendar-days all-icon"></i>
                 <p>All</p>
             </button>
-            <button class="menu-item">
+            <button class="nav-link">
                 <i class="fa fa-calendar-day today-icon"></i>
                 <p>Today</p>
             </button>
-            <button class="menu-item">
+            <button class="nav-link">
                 <i class="fa-solid fa-calendar-week week-icon"></i>
                 <p>Week</p>
             </button>
-            <button class="menu-item">
+            <button class="nav-link">
                 <i class="fa-regular fa-star important-icon"></i>
                 <p>Important</p>
             </button>
-            <button class="menu-item">
+            <button class="nav-link">
                 <i class="fa-regular fa-calendar-check completed-icon"></i>
                 <p>Completed</p>
             </button>
         </div>
 
         <div class="project-section">
-            <div class="project-section-header">
+            <div class="project-header">
                 <p>Projects (1)</p>
                 <button>
                     <i class="fa-solid fa-circle-plus icon add-icon"></i>
                 </button>
             </div>
 
-            <div class="projects">
-                <div class="project-details">
-                    <div class="project-text">
+            <div class="project-list">
+                <div class="project-item">
+                    <div class="project-item-name">
                         <i class="fa-solid fa-screwdriver-wrench icon"></i>
-                        <p class="project-name">Demo Project</p>
+                        <p class="project-name">DSA</p>
                     </div>
-                    <div class="project-action">
+                    <div class="project-item-actions">
                         <button>
                             <i class="fa-solid fa-pen-to-square icon edit-icon" title="Edit"></i>
                         </button>
@@ -67,25 +67,24 @@
         </div>
     </nav>
 
-    <main id="main">
-        <div class="title-div">
-            <i class="fa-solid fa-calendar-days .icon calendar-icon"></i>
-            <h2 class="title-text-div">All</h2>
+    <main id="main-content">
+        <div class="content-header">
+            <i class="fa-solid fa-calendar-days icon calendar-icon"></i>
+            <h2 class="content-title">All</h2>
         </div>
 
-        <div class="tasks-div">
-            <div class="tasks-text-div">
+        <div class="tasks-container">
+            <div class="tasks-header">
                 <h3>Tasks (1)</h3>
                 <i class="fa-solid fa-circle-plus icon add-icon"></i>
             </div>
 
-            
-            <div class="task-list">
-                <div class="task-main-content">
+            <div class="task-list js-task-list">
+                <div class="task-card js-task-card">
                     <div class="task-header">
                         <div class="task-title">
                             <input type="checkbox">
-                            <p class="task-title">Study Differential Equations</p>
+                            <p>Study Data Structures and Algorithms</p>
                         </div>
 
                         <div class="task-info">
@@ -103,14 +102,13 @@
                                 <i class="fa-solid fa-trash icon delete-icon"></i>
                             </button>
                         </div>
-                        <p class="task-tag"># Math Study</p>
+                        <p class="task-tag"># DSA</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-
-    <script src="main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

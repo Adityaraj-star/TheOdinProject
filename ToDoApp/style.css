@@ -13,7 +13,7 @@ body {
     display: grid;
     grid-template-areas: 
         "header header"
-        "sidebar main";
+        "sidebar main-content";
     grid-template-columns: 360px 1fr;
     grid-template-rows: auto 1fr;
     background-color: #f9f9f9;
@@ -38,37 +38,15 @@ button {
   opacity: 0.85;
 }
 
-.add-icon {
-  color: #28c76f;
-}
-.add-icon:hover {
-  color: #32e07f;
-}
-
-.edit-icon {
-  color: #0077ff;
-}
-.edit-icon:hover {
-  color: #005ec4;
-}
-
-.delete-icon {
-  color: #e63946;
-}
-.delete-icon:hover {
-  color: #ff4d5a;
-}
-
-.info-icon {
-  color: #6b7280;
-}
-.info-icon:hover {
-  color: #333;
-}
-
-.calendar-icon {
-  color: #6b6b6b;
-}
+.add-icon { color: #28c76f; }
+.add-icon:hover { color: #32e07f; }
+.edit-icon { color: #0077ff; }
+.edit-icon:hover { color: #005ec4; }
+.delete-icon { color: #e63946; }
+.delete-icon:hover { color: #ff4d5a; }
+.info-icon { color: #6b7280; }
+.info-icon:hover { color: #333; }
+.calendar-icon { color: #6b6b6b; }
 
 /* Header Styling */
 #header {
@@ -93,7 +71,7 @@ button {
 }
 
 /* Sidebar */
-#sidebar-menu {
+#sidebar {
     grid-area: sidebar;
     padding: 2rem 1.5rem;
     background-color: #ececec;
@@ -103,13 +81,13 @@ button {
     border-right: 1px solid #dcdcdc;
 }
 
-.menu-items {
+.sidebar-nav {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.menu-item {
+.nav-link {
     background-color: #fff;
     padding: 0.8rem 1rem;
     display: flex;
@@ -119,15 +97,11 @@ button {
     border-right: 1px solid #dcdcdc;
     transition: all 0.2s ease;
 }
-.menu-item:hover {
+.nav-link:hover {
     background-color: #fe5f55;
     color: #fff;
 }
-.menu-item i {
-  font-size: 1.2rem;
-}
-
-.menu-item i {
+.nav-link i {
   font-size: 1.2rem;
 }
 
@@ -136,7 +110,7 @@ button {
     margin-top: 2em;
 }
 
-.project-section-header {
+.project-header {
     padding-bottom: 0.3rem;
     border-bottom: 1px solid #aaa;
     display: flex;
@@ -144,20 +118,19 @@ button {
     align-items: center;
 }
 
-.project-section-header p {
+.project-header p {
     font-weight: 500;
     color: #555;
-
 }
 
-.projects {
+.project-list {
     margin-top: 1.2rem;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.project-details {
+.project-item {
     background-color: #fff;
     border-radius: 8px;
     padding: 0.6rem 0.8rem;
@@ -166,14 +139,14 @@ button {
     align-items: center;
 }
 
-.project-text {
+.project-item-name {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 0.9rem;
 }
 
-.project-action {
+.project-item-actions {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -197,8 +170,8 @@ button {
 }
 
 /* Main Section */
-#main {
-    grid-area: main;
+#main-content {
+    grid-area: main-content;
     padding: 2rem;
     overflow-y: auto;
     color: #808080f4;
@@ -206,38 +179,38 @@ button {
     flex-direction: column;
 }
 
-.title-div {
+.content-header {
     display: flex;
     align-items: center;
     gap: 10px;
     color: #333;
 }
-.title-div i {
+.content-header i {
   font-size: 1.7rem;
 }
 
-.title-text-div {
+.content-title {
     font-size: 2rem;
     font-weight: 600;
 }
 
-.tasks-div {
+.tasks-container {
     margin-top: 3rem;
 }
 
-.tasks-text-div {
+.tasks-header {
     border-bottom: 2px solid #dcdcdc;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
 }
-.tasks-text-div h3 {
+.tasks-header h3 {
     margin-left: 1rem;
     font-size: 1.5rem;
     color: #444;
 }
-.tasks-text-div i {
+.tasks-header i {
     margin-right: 1rem;
     font-size: 2rem;
 }
@@ -250,7 +223,7 @@ button {
     gap: 1.5rem;
 }
 
-.task-main-content {
+.task-card {
     background: #fff;
     padding: 1.2rem;
     border-radius: 10px;
@@ -262,7 +235,7 @@ button {
     transition: all 0.2s ease;
 }
 
-.task-main-content:hover {
+.task-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
     border-left-color: #fe5f55;
@@ -301,17 +274,14 @@ button {
     background-color: #ffdde0;
     color: #e63946;
 }
-
 .priority.urgent {
     background-color: #fff1cc;
     color: #f79f1b;
 }
-
 .priority.low {
     background-color: #dcfce7;
     color: #28c76f;
 }
-
 
 .task-description {
     font-size: 0.95rem;
