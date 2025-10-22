@@ -242,60 +242,100 @@ button {
     font-size: 2rem;
 }
 
-.tasks-list {
+.task-list {
     margin-top: 1rem;
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-.task-div {
+.task-main-content {
     background: #fff;
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; 
+    border-left: 5px solid transparent; 
+    transition: all 0.2s ease;
+}
+
+.task-main-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    border-left-color: #fe5f55;
+}
+
+.task-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.task-div:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.task-text-div {
+.task-title {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
 }
 
-.task-text-div input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #fe5f55;
-    cursor: pointer;
-}
-
-.task-text-div p {
-  font-size: 1rem;
-  color: #333;
-}
-
-.task-details-div {
+.task-info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
 }
 
-.task-date {
-  font-size: 0.9rem;
-  color: #777;
-  margin-right: 5px;
+.priority {
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
-.task-details-div i {
-  font-size: 1.2rem;
-  transition: color 0.2s ease;
+.priority.important {
+    background-color: #ffdde0;
+    color: #e63946;
+}
+
+.priority.urgent {
+    background-color: #fff1cc;
+    color: #f79f1b;
+}
+
+.priority.low {
+    background-color: #dcfce7;
+    color: #28c76f;
+}
+
+
+.task-description {
+    font-size: 0.95rem;
+    color: #666;
+    padding-left: 25px; 
+}
+
+.task-actions-and-tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.task-action-buttons {
+    display: flex;
+    gap: 8px;
+    padding-left: 25px;
+}
+
+.task-tag {
+    background-color: #f3f4f6;
+    color: #555;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
 }
