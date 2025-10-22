@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <h1><i class="fa-solid fa-check-double"></i> ToDo</h1>
+    </header>
+
+    <nav id="sidebar-menu">
+        <div class="menu-items">
+            <button class="menu-item">
+                <i class="fa-regular fa-calendar-days all-icon"></i>
+                <p>All</p>
+            </button>
+            <button class="menu-item">
+                <i class="fa fa-calendar-day today-icon"></i>
+                <p>Today</p>
+            </button>
+            <button class="menu-item">
+                <i class="fa-solid fa-calendar-week week-icon"></i>
+                <p>Week</p>
+            </button>
+            <button class="menu-item">
+                <i class="fa-regular fa-star important-icon"></i>
+                <p>Important</p>
+            </button>
+            <button class="menu-item">
+                <i class="fa-regular fa-calendar-check completed-icon"></i>
+                <p>Completed</p>
+            </button>
+        </div>
+
+        <div class="project-section">
+            <div class="project-section-header">
+                <p>Projects (1)</p>
+                <button>
+                    <i class="fa-solid fa-circle-plus icon add-icon"></i>
+                </button>
+            </div>
+
+            <div class="projects">
+                <div class="project-details">
+                    <div class="project-text">
+                        <i class="fa-solid fa-screwdriver-wrench icon"></i>
+                        <p class="project-name">Demo Project</p>
+                    </div>
+                    <div class="project-action">
+                        <button>
+                            <i class="fa-solid fa-pen-to-square icon edit-icon" title="Edit"></i>
+                        </button>
+                        <button>
+                            <i class="fa-solid fa-trash icon delete-icon" title="Delete"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+                <p>Built by <a> AdityaRaj</a> | <a>Source Code</a></p>
+        </div>
+    </nav>
+
+    <main id="main">
+        <div class="title-div">
+            <i class="fa-solid fa-calendar-days .icon calendar-icon"></i>
+            <h2 class="title-text-div">All</h2>
+        </div>
+
+        <div class="tasks-div">
+            <div class="tasks-text-div">
+                <h3>Tasks (1)</h3>
+                <i class="fa-solid fa-circle-plus icon add-icon"></i>
+            </div>
+
+            <div class="tasks-list">
+                <div class="task-div">
+                    <div class="task-text-div">
+                        <input type="checkbox">
+                        <p>Task1</p>
+                    </div>
+
+                    <div class="task-details-div">
+                        <p class="task-date">2025-10-21</p>
+                        <button class="edit-btn">
+                            <i class="fa-solid fa-pen-to-square .icon edit-icon"></i>
+                        </button>
+                        <button class="delete-btn">
+                            <i class="fa-solid fa-trash .icon delete-icon"></i>
+                        </button>
+                        <button class="info-btn">
+                            <i class="fa-solid fa-circle-info .icon info-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
