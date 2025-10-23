@@ -309,3 +309,109 @@ button {
     border-radius: 8px;
     font-size: 0.85rem;
 }
+
+/* Form Dialog  */
+.form-dialog {
+    background: #ffffff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem 2rem;
+    width: 450px; 
+}
+
+.form-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px); 
+}
+
+.form {
+    margin: 0;
+}
+
+.form-container {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
+    padding: 0;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #fe5f55; 
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 1.5rem;
+    border-top: 1px solid #ececec;
+    padding-top: 1rem;
+}
+
+.action-buttons button {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn {
+    background-color: #f1f1f1;
+    color: #555;
+}
+.cancel-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.addTodo-btn {
+    background-color: #fe5f55; 
+    color: #fff;
+}
+.addTodo-btn:hover {
+    background-color: #e64a40;
+}
