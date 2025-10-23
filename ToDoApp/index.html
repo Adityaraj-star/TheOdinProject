@@ -76,38 +76,55 @@
         <div class="tasks-container">
             <div class="tasks-header">
                 <h3>Tasks (1)</h3>
-                <i class="fa-solid fa-circle-plus icon add-icon"></i>
+                <i class="fa-solid fa-circle-plus icon add-icon js-add-icon"></i>
             </div>
 
             <div class="task-list js-task-list">
-                <div class="task-card js-task-card">
-                    <div class="task-header">
-                        <div class="task-title">
-                            <input type="checkbox">
-                            <p>Study Data Structures and Algorithms</p>
-                        </div>
-
-                        <div class="task-info">
-                            <span class="priority important">Important</span>
-                            <p class="task-date">22 Oct 2025</p>
-                        </div>
-                    </div>
-                    <p class="task-description">Continue through the textbook until page 130.</p>
-                    <div class="task-actions-and-tags">
-                        <div class="task-action-buttons">
-                            <button class="edit-btn">
-                                <i class="fa-solid fa-pen-to-square icon edit-icon"></i>
-                            </button>
-                            <button class="delete-btn">
-                                <i class="fa-solid fa-trash icon delete-icon"></i>
-                            </button>
-                        </div>
-                        <p class="task-tag"># DSA</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </main>
+
+    <dialog class="form-dialog js-form-dialog">
+        <form method="dialog" class="form">
+            <fieldset class="form-container">
+                <div class="form-header">
+                    <legend>New Task</legend>
+                </div>
+
+                <div class="details-container">
+                    <div class="detail">
+                        <label for="todo_name">Todo Name</label>
+                        <input type="text" id="todo_name" name="todoName" placeholder="Todo Name" required autofocus> 
+                    </div>
+
+                    <div class="detail">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description" placeholder="Description" required>
+                    </div>
+
+                    <div class="detail">
+                        <label for="dueDate">Due Date</label>
+                        <input type="date" id="dueDate" name="dueDate" required>
+                    </div>
+
+                    <div class="detail">
+                        <label for="priority">Priority</label>
+                        <select name="priority" id="priority">
+                            <option value="low">Low</option>
+                            <option value="important">Important</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button  type="reset" class="cancel-btn" value="reset">Cancel</button>
+                        <button type="submit" class="addTodo-btn" value="add">Add Todo</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </dialog>
 
     <script type="module" src="scripts/main.js"></script>
 </body>
