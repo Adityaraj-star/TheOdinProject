@@ -1,21 +1,36 @@
 export const todos = [
     {
-        id: 1,
-        title: "Study Data Structures and Algorithms",
+        id: crypto.randomUUID(),
+        name: "Study Data Structures and Algorithms",
         description: "Continue through the textbook until page 130.",
         dueDate: "2025-10-21",
-        priority: "Important",
-        projectSection: "# DSA",
+        priority: "important",
+        inbox: "# DSA",
         isCompleted: false
     },
-
     {
-        id: 2,
-        title: "Submit Project Proposal",
+        id: crypto.randomUUID(),
+        name: "Submit Project Proposal",
         description: "Finalize the proposal document and email it to the professor.",
         dueDate: "2025-10-24",
         priority: "urgent",
-        projectSection: "# University",
+        inbox: "# University",
         isCompleted: false
     }
-]
+];
+
+export function addTasksToTodos(name, description, dueDate, priority, inbox) {
+    const newId = crypto.randomUUID();
+    
+    const todo = {
+        id: newId,
+        name,
+        description,
+        dueDate,
+        priority,
+        inbox,
+        isCompleted: false
+    };
+
+    todos.push(todo);
+}
