@@ -40,25 +40,12 @@
             <div class="project-header">
                 <p>Projects (1)</p>
                 <button>
-                    <i class="fa-solid fa-circle-plus icon add-icon"></i>
+                    <i class="fa-solid fa-circle-plus icon add-icon js-add-project-icon"></i>
                 </button>
             </div>
 
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-name">
-                        <i class="fa-solid fa-screwdriver-wrench icon"></i>
-                        <p class="project-name">DSA</p>
-                    </div>
-                    <div class="project-item-actions">
-                        <button>
-                            <i class="fa-solid fa-pen-to-square icon edit-icon" title="Edit"></i>
-                        </button>
-                        <button>
-                            <i class="fa-solid fa-trash icon delete-icon" title="Delete"></i>
-                        </button>
-                    </div>
-                </div>
+            <div class="project-list js-projects-list">
+                
             </div>
         </div>
 
@@ -127,6 +114,23 @@
                     <div class="action-buttons">
                         <button  type="reset" class="cancel-btn js-cancel-btn" value="reset">Cancel</button>
                         <button type="submit" class="addTodo-btn js-addTodo-btn" value="add">Add Todo</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </dialog>
+
+    <dialog class="form-dialog js-project-dialog">
+        <form method="dialog" class="js-addProject-form">
+            <fieldset class="form-container">
+                <div class="details-container">
+                    <div class="detail">
+                        <label for="project_name">Project Name</label>
+                        <input type="text" id="project_name" class="js-project-name" name="projectName" placeholder="Project Name" required autofocus>
+                    </div>
+                    <div class="action-buttons">
+                        <button  type="reset" class="cancel-btn js-cancel-project-btn" value="reset">Cancel</button>
+                        <button type="submit" class="create-project-btn js-create-project-btn" value="add">Create project</button>
                     </div>
                 </div>
             </fieldset>
