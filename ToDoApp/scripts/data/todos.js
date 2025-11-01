@@ -19,7 +19,7 @@ export const todos = [
     }
 ];
 
-export function addTasksToTodos(name, description, dueDate, priority, inbox) {
+export function addTodo(name, description, dueDate, priority, inbox) {
     const newId = crypto.randomUUID();
     
     const todo = {
