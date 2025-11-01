@@ -317,7 +317,7 @@ button {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 1.5rem 2rem;
-    width: 450px; 
+    width: 400px; 
 }
 
 .form-dialog::backdrop {
@@ -408,10 +408,24 @@ select:focus {
     background-color: #e0e0e0;
 }
 
-.addTodo-btn {
+.addTodo-btn, .create-project-btn {
     background-color: #fe5f55; 
     color: #fff;
 }
-.addTodo-btn:hover {
+.addTodo-btn:hover, .create-project-btn:hover {
     background-color: #e64a40;
+}
+
+.project-dialog {
+    border: none;
+    background-color: #fff;
+    padding: 1.5rem 2rem;;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 450px;
+}
+
+.project-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px); 
 }
