@@ -34,3 +34,14 @@ export function addTodo(name, description, dueDate, priority, inbox) {
 
     todos.push(todo);
 }
+
+export function updateTodo(id, name, description, dueDate, priority, inbox) {
+    const todo  = todos.find(todoItem => todoItem.id === id);
+    if (!todo) return;
+
+    todo.name = name;
+    todo.description = description;
+    todo.dueDate = dueDate;
+    todo.priority = priority;
+    todo.inbox = inbox;
+}

@@ -1,4 +1,4 @@
-import { addTodo } from "./data/todos.js";
+import { todos, addTodo, updateTodo } from "./data/todos.js";
 import { addProjects } from "./data/projects.js";
 import { renderTodoCards, renderProjectCards } from "./render.js";
 
@@ -20,9 +20,16 @@ const addProjectForm = document.querySelector(".js-addProject-form");
 
 const projectNameBox = document.querySelector(".js-project-name");
 
+const todoListContainer = document.querySelector(".js-task-list");
+const addTodoBtn = document.querySelector(".js-addTodo-btn");
+
 
 export function setupEventListeners() {
+    let editingTodoId = null; //to remember which todo is edited
+
     addTodoIcon.addEventListener('click', () => {
+        editingTodoId = null;
+        addTodoBtn.textContent = "Add Todo";
         formDialog.showModal();
     });
 
@@ -44,7 +51,12 @@ export function setupEventListeners() {
             return;
         }
 
-        addTodo(todoName, todoDescription, todoDueDate, todoPriority, todoInbox);
+        if (editingTodoId) {
+            updateTodo(editingTodoId, todoName, todoDescription, todoDueDate, todoPriority, todoInbox);
+        } else {
+            addTodo(todoName, todoDescription, todoDueDate, todoPriority, todoInbox);
+        }
+
         renderTodoCards();
         formDialog.close();
     });
@@ -74,5 +86,35 @@ export function setupEventListeners() {
         addProjects(projectName);
         renderProjectCards();
         projectDialog.close();
+        editingTodoId = null;
+        addTodoBtn.textContent = "Add Todo";
+    });
+
+
+    todoListContainer.addEventListener('click', (event) => {
+        const editIcon = event.target.closest('.edit-icon');
+        if (!editIcon) return;
+
+        const card = editIcon.closest('.js-task-card');
+
+        const todoId = card.dataset.todoId;
+        editingTodoId = todoId;
+
+        console.log(todoId);
+
+        todos.forEach((todoToEdit) => {
+            if (todoToEdit.id == todoId) {
+                todoNameBox.value = todoToEdit.name;
+                todoDescriptionBox.value = todoToEdit.description;
+                todoDueDateBox.value = todoToEdit.dueDate;
+                todoPriorityBox.value = todoToEdit.priority;
+                todoInboxBox.value = todoToEdit.inbox;
+
+                formDialog.showModal();
+                addTodoBtn.textContent = "Update Todo";
+            }
+        })
+        
     });
 }
+
