@@ -23,7 +23,6 @@ const projectNameBox = document.querySelector(".js-project-name");
 const todoListContainer = document.querySelector(".js-task-list");
 const addTodoBtn = document.querySelector(".js-addTodo-btn");
 
-
 export function setupEventListeners() {
     let editingTodoId = null; //to remember which todo is edited
 
@@ -94,16 +93,14 @@ export function setupEventListeners() {
     todoListContainer.addEventListener('click', (event) => {
         const editIcon = event.target.closest('.edit-icon');
         if (!editIcon) return;
-
         const card = editIcon.closest('.js-task-card');
-
         const todoId = card.dataset.todoId;
         editingTodoId = todoId;
 
         console.log(todoId);
 
         todos.forEach((todoToEdit) => {
-            if (todoToEdit.id == todoId) {
+            if (todoToEdit.id === todoId) {
                 todoNameBox.value = todoToEdit.name;
                 todoDescriptionBox.value = todoToEdit.description;
                 todoDueDateBox.value = todoToEdit.dueDate;
@@ -113,8 +110,39 @@ export function setupEventListeners() {
                 formDialog.showModal();
                 addTodoBtn.textContent = "Update Todo";
             }
-        })
-        
+        });
+
+    });
+
+    todoListContainer.addEventListener('click', (event) => {
+        const dltIcon = event.target.closest('.delete-icon');
+        if (!dltIcon) return;
+        const card = dltIcon.closest('.js-task-card');
+        const todoId = card.dataset.todoId;
+
+        todos.forEach((todo, index) => {
+            if (todo.id === todoId) {
+                todos.splice(index, 1);
+                renderTodoCards();
+            }
+        });
+    });
+
+
+    todoListContainer.addEventListener('click', (event) => {
+        const checkbox = event.target.closest('.js-todo-checkbox');
+        if (!checkbox) return;
+
+        const card = checkbox.closest('.js-task-card');
+        const todoId = card.dataset.todoId;
+
+        todos.forEach((todo) => {
+            if (todo.id === todoId) {
+                todo.isCompleted = checkbox.checked;
+            }
+        });
+
+        renderTodoCards();
     });
 }
 
