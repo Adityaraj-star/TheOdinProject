@@ -1,11 +1,11 @@
 export const projects = [
     {
         id: crypto.randomUUID(),
-        name: "Chores"
+        name: "# Chores"
     },
     {
         id: crypto.randomUUID(),
-        name: "DSA"
+        name: "# DSA"
     }
 ]
 
