@@ -429,3 +429,8 @@ select:focus {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(2px); 
 }
+
+.completed {
+    opacity: 0.4;
+    text-decoration: line-through;
+}
